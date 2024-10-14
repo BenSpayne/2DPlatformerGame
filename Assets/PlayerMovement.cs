@@ -10,11 +10,14 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
+    private Manager GameManager;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        GameManager = GameObject.Find("GameManager").GetComponent<Manager>();
+
     }
 
     private void Update()
@@ -37,4 +40,17 @@ public class PlayerMovement : MonoBehaviour
             isJumping = false;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.tag == "Coin")
+            {
+                GameManager.coinsCounter += 1;
+                Destroy(other.gameObject);
+                Debug.Log("Player has collected a coin!");
+            }
+        }
+
+    
+
 }
