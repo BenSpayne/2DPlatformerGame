@@ -8879,7 +8879,6 @@ Transform:
   - {fileID: 179656655}
   - {fileID: 1666745884}
   - {fileID: 520282399}
-  - {fileID: 892604170}
   - {fileID: 919839964}
   - {fileID: 1744322601}
   - {fileID: 471122301}
@@ -8972,7 +8971,7 @@ GameObject:
   - component: {fileID: 806166264}
   - component: {fileID: 806166263}
   m_Layer: 0
-  m_Name: 'Player idle '
+  m_Name: 'Movement '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9185,7 +9184,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1102305066}
-  m_Father: {fileID: 752913302}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &919839963
 GameObject:
@@ -29679,3 +29678,4 @@ SceneRoots:
   - {fileID: 1169814402}
   - {fileID: 1613500021}
   - {fileID: 632438380}
+  - {fileID: 892604170}
