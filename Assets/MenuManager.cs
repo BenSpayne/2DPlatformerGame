@@ -11,6 +11,11 @@ public class MenuManager : MonoBehaviour
        SceneManager.LoadScene(sceneName);
    }
 
+   public void RestartGame()
+   {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+   }
+
     public void Exit()
    {
        // If we are in the editor

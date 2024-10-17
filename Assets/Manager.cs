@@ -12,4 +12,6 @@ public class Manager : MonoBehaviour
         {
             coinText.text = coinsCounter.ToString();
         }
+
+        
 }

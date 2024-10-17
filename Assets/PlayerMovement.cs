@@ -1,9 +1,12 @@
+using System.Numerics;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
     public float jump;
+    public Animator animator;
 
     private float move;
     private bool isJumping;
@@ -11,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Manager GameManager;
+
+    public MenuManager menuManager;
 
     private void Start()
     {
@@ -24,12 +29,17 @@ public class PlayerMovement : MonoBehaviour
     {
         move = Input.GetAxis("Horizontal");
 
-        rb.velocity = new Vector2(speed * move, rb.velocity.y);
+        rb.velocity = new (speed * move, rb.velocity.y);
+
+        animator.SetFloat("Speed", Mathf.Abs(move));
+        animator.SetFloat("IsJumping", Mathf.Abs(rb.velocity.y));
+        //animator.SetFloat("IsFalling", Mathf.Abs(rb.velocity.x));
+
 
         if(Input.GetButtonDown("Jump") && isJumping == false)
         {
             isJumping = true;
-            rb.AddForce(new Vector2(rb.velocity.x, jump));
+            rb.AddForce(new (rb.velocity.x, jump));
         }
     }
 
@@ -42,15 +52,19 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Coin")
         {
-            if (other.gameObject.tag == "Coin")
-            {
-                GameManager.coinsCounter += 1;
-                Destroy(other.gameObject);
-                Debug.Log("Player has collected a coin!");
-            }
+            GameManager.coinsCounter += 1;
+            Destroy(other.gameObject);
+            Debug.Log("Player has collected a coin!");
         }
 
-    
-
+        if (other.gameObject.tag == "Enemy")
+        {
+             Debug.Log("Player has hit spike");
+           
+            menuManager.ChangeScene("GameOverScreen");
+        }
+    }
 }
