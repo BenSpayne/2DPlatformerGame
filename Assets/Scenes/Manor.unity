@@ -65156,7 +65156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4101739182250702603, guid: 3cdc09f77921a424e98ab737c1b139cb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -22.73
+      value: -22.45
       objectReference: {fileID: 0}
     - target: {fileID: 4101739182250702603, guid: 3cdc09f77921a424e98ab737c1b139cb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -65826,7 +65826,7 @@ MonoBehaviour:
   platform: {fileID: 1287306942}
   startPoint: {fileID: 1467668914}
   endPoint: {fileID: 2071869430}
-  speed: 1
+  speed: 0.7
   direction: 1
 --- !u!61 &1287306944
 BoxCollider2D:
@@ -67073,7 +67073,7 @@ Transform:
   m_GameObject: {fileID: 1467668913}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.803, y: -22.728, z: 0}
+  m_LocalPosition: {x: 22.803, y: -22.448002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -74756,7 +74756,7 @@ Transform:
   m_GameObject: {fileID: 1951873274}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7059638, w: 0.7082479}
-  m_LocalPosition: {x: 27.04, y: -51.01, z: 25}
+  m_LocalPosition: {x: 27.17, y: -51.01, z: 25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -74888,8 +74888,8 @@ Tilemap:
   - first: {x: 30, y: -25, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 4
-      m_TileSpriteIndex: 4
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -74978,8 +74978,8 @@ Tilemap:
   - first: {x: 39, y: -25, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -75078,8 +75078,8 @@ Tilemap:
   - first: {x: 49, y: -25, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 4
-      m_TileSpriteIndex: 4
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -75129,26 +75129,26 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 8
     m_Data: {fileID: 11400000, guid: 415ff35b0f6318c409a579dc3f56fdd0, type: 2}
-  - m_RefCount: 7
+  - m_RefCount: 10
     m_Data: {fileID: 11400000, guid: a39b95b39f7639640ad4dc108dd0c16b, type: 2}
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: 99758fc913db6e442bde9f99f0467cd8, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: e31f3ac4ac93a9a4a9f9fef0025bc9c2, type: 2}
-  - m_RefCount: 6
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: e67ee5a7ca96ccf49879e8b96c48b571, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 8b4d75c584d61384085cf21b2c407b43, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 8
     m_Data: {fileID: 838033483, guid: 2188ff86348a0fd41863149c9d256878, type: 3}
-  - m_RefCount: 7
+  - m_RefCount: 10
     m_Data: {fileID: -491633430, guid: 2188ff86348a0fd41863149c9d256878, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: 1836753133, guid: 2188ff86348a0fd41863149c9d256878, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -1571212055, guid: 2188ff86348a0fd41863149c9d256878, type: 3}
-  - m_RefCount: 6
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 4
     m_Data: {fileID: 1907398832, guid: 2188ff86348a0fd41863149c9d256878, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1201163863, guid: 2188ff86348a0fd41863149c9d256878, type: 3}
@@ -75831,7 +75831,7 @@ Transform:
   m_GameObject: {fileID: 2016539619}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.31, y: 1.09, z: 0}
+  m_LocalPosition: {x: 12.31, y: 1.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -76334,7 +76334,7 @@ Transform:
   m_GameObject: {fileID: 2071869429}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 30.118, y: -22.72, z: 0}
+  m_LocalPosition: {x: 29.73, y: -22.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
