@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer sr;
     private Manager GameManager;
 
+    private UnityEngine.Vector3 respawnpoint;
     public MenuManager menuManager;
 
     private void Start()
@@ -64,7 +65,16 @@ public class PlayerMovement : MonoBehaviour
         {
              Debug.Log("Player has hit spike");
            
-            menuManager.ChangeScene("GameOverScreen");
+           transform.position = respawnpoint;
+            
+        }
+
+        if (other.gameObject.tag == "Checkpoint")
+        {
+            respawnpoint = transform.position;
         }
     }
+
+
+
 }

@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Coin
   - Enemy
+  - Checkpoint
+  - Weak Point
   layers:
   - Default
   - TransparentFX
