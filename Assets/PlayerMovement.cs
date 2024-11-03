@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.gameObject.tag == "Enemy")
         {
-             Debug.Log("Player has hit spike");
+             Debug.Log("Player has hit Enemy");
            
            transform.position = respawnpoint;
             

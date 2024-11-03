@@ -43,8 +43,6 @@ public class MovingPlatform : MonoBehaviour
             return endPoint.position;
        }
    }
-
-      // Ensure player becomes a child of the platform on collision
    
    // Ensure player becomes a child of the platform on collision
    void OnCollisionEnter2D(Collision2D col)
