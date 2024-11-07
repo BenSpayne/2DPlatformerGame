@@ -5,6 +5,7 @@ using UnityEngine;
 public class SkeletonDamage : MonoBehaviour
 {
     public int damage;
+    public Animator animator;
     public PlayerHealth playerHealth;
     
     private void OnCollisionEnter2D(Collision2D collision)
@@ -14,4 +15,20 @@ public class SkeletonDamage : MonoBehaviour
             playerHealth.TakeDamage(damage);
         }
     }
+
+    /*void Start();
+    {
+        currentHealth = maxHealth;
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Debug.Log("Enemy Died");
+    }*/
+
 }

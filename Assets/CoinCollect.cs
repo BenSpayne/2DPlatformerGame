@@ -14,5 +14,6 @@ public class CoinCollect : MonoBehaviour
     void Update()
     {
         
+        
     }
 }

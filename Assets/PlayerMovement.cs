@@ -2,80 +2,7 @@ using System.Numerics;
 using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.AI;
-
-/*public class PlayerMovement : MonoBehaviour
-{
-    public float speed;
-    public float jump;
-    public Animator animator;
-
-    private float move;
-    private bool isJumping;
-
-    private Rigidbody2D rb;
-    private SpriteRenderer sr;
-    private Manager GameManager;
-
-    private UnityEngine.Vector3 respawnpoint;
-    public MenuManager menuManager;
-
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
-        GameManager = GameObject.Find("GameManager").GetComponent<Manager>();
-
-    }
-
-    private void Update()
-    {
-        move = Input.GetAxis("Horizontal");
-
-        rb.velocity = new (speed * move, rb.velocity.y);
-
-        animator.SetFloat("Speed", Mathf.Abs(move));
-        animator.SetFloat("IsJumping", Mathf.Abs(rb.velocity.y));
-        animator.SetFloat("IsFalling", Mathf.Abs(rb.velocity.x));
-
-
-        if(Input.GetButtonDown("Jump") && isJumping == false)
-        {
-            isJumping = true;
-            rb.AddForce(new (rb.velocity.x, jump));
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isJumping = false;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Coin")
-        {
-            GameManager.coinsCounter += 1;
-            Destroy(other.gameObject);
-            Debug.Log("Player has collected a coin!");
-        }
-
-        if (other.gameObject.tag == "Enemy")
-        {
-             Debug.Log("Player has hit Enemy");
-           
-           transform.position = respawnpoint;
-            
-        }
-
-        if (other.gameObject.tag == "Checkpoint")
-        {
-            respawnpoint = transform.position;
-        }
-    }
-}*/
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour 
 {
@@ -84,7 +11,13 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping;
     public MenuManager menuManager;
     public Manager GameManager;
+    public int health;
     private Rigidbody2D rb;
+    public AudioClip coinSound;
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public int attackDamage = 1;
+    public LayerMask enemyLayers;
     private Animator animator;
     private BoxCollider2D boxColl;    
     private float horizontal;
@@ -131,6 +64,22 @@ public class PlayerMovement : MonoBehaviour
         }
 
         rb.velocity = new UnityEngine.Vector2(horizontal * speed, rb.velocity.y);
+
+        if(Input.GetMouseButtonDown(0))
+        {
+            Attack();
+        }
+    }
+
+    void Attack()
+    {
+        animator.SetTrigger("IsAttacking");
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers); 
+        foreach(Collider2D enemy in hitEnemies)
+        {
+            Debug.Log("Player hit NPC Enemy");
+            //enemy.GetComponent<enemy>().TakeDamage(attackDamage);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -141,10 +90,20 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+    void OnDrawGizmosSelected()
+    {
+
+        if(attackPoint = null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Coin"))
         {
+            AudioSource.PlayClipAtPoint(coinSound, transform.position);
             GameManager.coinsCounter += 1;
             Destroy(other.gameObject);
             Debug.Log("Player has collected a coin!");
@@ -152,15 +111,23 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.gameObject.tag == "Enemy")
         {
+            health -= 1;
              Debug.Log("Player has hit Enemy");
-           
-           transform.position = respawnpoint;
-            
+            transform.position = respawnpoint;
         }
+    
 
         if (other.gameObject.tag == "Checkpoint")
         {
             respawnpoint = transform.position;
+        }
+
+        if (other.gameObject.tag == "mapEdge")
+        {
+             Debug.Log("Player has hit the map Edge");
+           
+           transform.position = respawnpoint;
+            
         }
 
     }
@@ -343,6 +310,79 @@ public class PlayerWalk : MonoBehaviour
     }
 }*/
 
+/*public class PlayerMovement : MonoBehaviour
+{
+    public float speed;
+    public float jump;
+    public Animator animator;
+
+    private float move;
+    private bool isJumping;
+
+    private Rigidbody2D rb;
+    private SpriteRenderer sr;
+    private Manager GameManager;
+
+    private UnityEngine.Vector3 respawnpoint;
+    public MenuManager menuManager;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
+        GameManager = GameObject.Find("GameManager").GetComponent<Manager>();
+
+    }
+
+    private void Update()
+    {
+        move = Input.GetAxis("Horizontal");
+
+        rb.velocity = new (speed * move, rb.velocity.y);
+
+        animator.SetFloat("Speed", Mathf.Abs(move));
+        animator.SetFloat("IsJumping", Mathf.Abs(rb.velocity.y));
+        animator.SetFloat("IsFalling", Mathf.Abs(rb.velocity.x));
+
+
+        if(Input.GetButtonDown("Jump") && isJumping == false)
+        {
+            isJumping = true;
+            rb.AddForce(new (rb.velocity.x, jump));
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isJumping = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Coin")
+        {
+            GameManager.coinsCounter += 1;
+            Destroy(other.gameObject);
+            Debug.Log("Player has collected a coin!");
+        }
+
+        if (other.gameObject.tag == "Enemy")
+        {
+             Debug.Log("Player has hit Enemy");
+           
+           transform.position = respawnpoint;
+            
+        }
+
+        if (other.gameObject.tag == "Checkpoint")
+        {
+            respawnpoint = transform.position;
+        }
+    }
+}*/
 
 
 
