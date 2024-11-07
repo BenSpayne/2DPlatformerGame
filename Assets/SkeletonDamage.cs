@@ -5,6 +5,7 @@ using UnityEngine;
 public class SkeletonDamage : MonoBehaviour
 {
     public int damage;
+    public int skeletonHealth;
     public Animator animator;
     public PlayerHealth playerHealth;
     

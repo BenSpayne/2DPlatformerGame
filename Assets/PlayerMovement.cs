@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private UnityEngine.Vector3 respawnpoint;
     private bool isJumping;
     public MenuManager menuManager;
-    public Manager GameManager;
+    public GameController gameController;
     public int health;
     private Rigidbody2D rb;
     public AudioClip coinSound;
@@ -45,6 +45,9 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         boxColl = GetComponent<BoxCollider2D>();
+
+
+
     }
 
     private void Update()
@@ -104,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("Coin"))
         {
             AudioSource.PlayClipAtPoint(coinSound, transform.position);
-            GameManager.coinsCounter += 1;
+            gameController.ChangeCoin(1);
             Destroy(other.gameObject);
             Debug.Log("Player has collected a coin!");
         }
